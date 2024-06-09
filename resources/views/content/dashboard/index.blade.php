@@ -1,6 +1,6 @@
 @extends('layout.admin')
 
-@section('title', 'Dashboard | Broiler Guard')
+@section('title', 'Dashboard | QandangQu')
 
 @section('content')
     <div class="container-fluid">

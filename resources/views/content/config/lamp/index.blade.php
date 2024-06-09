@@ -1,6 +1,6 @@
 @extends('layout.admin')
 
-@section('title', 'Config Lamp | Smart Chikinot')
+@section('title', 'Config Lamp | QandangQu')
 
 @section('page', 'Config Lamp')
 
