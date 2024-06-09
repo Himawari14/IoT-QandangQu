@@ -435,7 +435,7 @@
         const options = {
             clean: true,
             connectTimeout: 4000,
-            clientId: 'Ari',
+            clientId: 'Ahmad',
             username: 'Himawari14',
             password: 'H1m4w4r1',
             ca: `-----BEGIN CERTIFICATE-----
@@ -475,11 +475,21 @@
         client.on('message', async function (topic, message) {
             if (topic == '/temperature'){
                 if (typeof message == 'object'){
-                    console.log(message.toString())
-                    const data = JSON.parse(message);
-                    $('#temp-value').html(data.temperature)
-                    $('#humi-value').html(data.humidity)
-                    $('#light-value').html(data.ldr)
+                    const data = JSON.parse(message.toString());
+                    console.log('Received message:', data);
+
+                    // Extract data
+                    const deviceKode = data.device_kode;
+                    const temperature = data.temperature;
+                    const humidity = data.humidity;
+                    const ldr = data.ldr;
+
+                    let data1 = parseFloat(temperature).toFixed(2)
+                    let data2 = parseFloat(ldr).toFixed(2)
+
+                    $('#temp-value').html(data1)
+                    $('#humi-value').html(humidity)
+                    $('#light-value').html(data2)
                 }
             }
         })

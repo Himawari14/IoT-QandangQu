@@ -20,10 +20,20 @@ Route::post('/auth/logout',[AuthController::class, 'logout']);
 Route::middleware('auth')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::middleware('role:farmer')->prefix('config')->name('config.')->group(function(){
-        Route::get('heater', [ConfigHeaterController::class, 'index']);
+        Route::get('config/heater',[ConfigHeaterController::class,'index']);
+        Route::post('config/heater/update',[ConfigHeaterController::class,'update'])->name('heater.update');
+        Route::get('config/lamp',[ConfigLampController::class,'index']);
+        Route::post('config/lamp/update',[ConfigLampController::class,'update'])->name('lamp.update');
     });
     Route::middleware('role:admin')->prefix('manage')->name('manage.')->group(function(){
         Route::resource('users', UserController::class);
         Route::resource('devices', DeviceController::class);
     });
 });
+
+
+
+    // Route::get('config/heater',[ConfigHeaterController::class,'index']);
+    // Route::post('config/heater/update',[ConfigHeaterController::class,'update'])->name('heater.update');
+    // Route::get('config/lamp',[ConfigLampController::class,'index']);
+    // Route::post('config/lamp/update',[ConfigLampController::class,'update'])->name('lamp.update');
